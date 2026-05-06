@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — TechHub</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.pr-hero{height:320px;position:relative;overflow:hidden;padding-top:68px;}
+.pr-hero img{width:100%;height:100%;object-fit:cover;filter:brightness(.28) saturate(.5);}
+.pr-hero-over{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(to bottom,rgba(7,8,12,.2),rgba(7,8,12,.88));}
+.pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:56px 48px 20px;max-width:1200px;margin:0 auto;align-items:start;}
+.pr-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:38px 30px;position:relative;transition:border-color .3s,transform .3s,box-shadow .3s;}
+.pr-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.pr-card.feat{background:var(--card2);border-color:var(--border2);}
+.pr-card.feat::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.pr-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:4px 16px;border-radius:2px;white-space:nowrap;font-weight:500;}
+.pr-plan{font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.pr-price{font-family:var(--serif);font-size:50px;font-weight:700;color:var(--text);line-height:1;margin-bottom:4px;}
+.pr-price sup{font-size:20px;color:var(--text3);vertical-align:super;}
+.pr-price span{font-size:15px;font-weight:300;color:var(--text2);}
+.pr-desc{font-size:13px;color:var(--text2);font-weight:300;line-height:1.75;margin:14px 0 24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.pr-features{list-style:none;margin-bottom:30px;}
+.pr-features li{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:300;color:var(--text2);padding:9px 0;border-bottom:1px solid var(--border);}
+.pr-features li:last-child{border-bottom:none;}
+.pr-yes{color:var(--gold);flex-shrink:0;font-size:12px;}
+.pr-no{color:var(--text3);flex-shrink:0;font-size:12px;}
+.pr-note{text-align:center;padding:16px 48px 56px;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--text3);}
+.pr-note a{color:var(--gold);}
+.guarantee{display:grid;grid-template-columns:repeat(3,1fr);background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:0;}
+.guar-cell{padding:36px 28px;text-align:center;border-right:1px solid var(--border);}
+.guar-cell:last-child{border-right:none;}
+.guar-icon{font-size:26px;margin-bottom:12px;}
+.guar-title{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--gold2);margin-bottom:6px;}
+.guar-desc{font-size:12px;color:var(--text2);font-weight:300;line-height:1.7;}
+@media(max-width:800px){.pr-grid{grid-template-columns:1fr;padding:44px 20px 20px;max-width:440px;}.pr-note{padding:14px 20px 44px;}.guarantee{grid-template-columns:1fr;}}
+</style>
+</head>
+<body data-page="pricing">
+
+<nav>
+  <a class="logo" href="../index.html">
+    <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lg1" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5E4A8"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#7A6528"/>
+    </linearGradient>
+    <linearGradient id="lg2" x1="0" y1="19" x2="38" y2="19" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D6B4F"/>
+      <stop offset="100%" stop-color="#0D9E72"/>
+    </linearGradient>
+  </defs>
+  <path d="M19 1L35 9.5V28.5L19 37L3 28.5V9.5L19 1Z" stroke="url(#lg1)" stroke-width="0.8" fill="none" opacity="0.6"/>
+  <path d="M19 6L31 13V25L19 32L7 25V13L19 6Z" stroke="url(#lg1)" stroke-width="0.5" fill="none" opacity="0.28"/>
+  <path d="M6 25 Q19 34 32 25" stroke="url(#lg2)" stroke-width="0.8" fill="none" opacity="0.65"/>
+  <line x1="11" y1="15" x2="27" y2="15" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="19" y1="15" x2="19" y2="27" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="19" cy="2.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+  <circle cx="19" cy="35.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+</svg>
+    <div class="logo-words">
+      <span class="logo-name">TechHub</span>
+      <span class="logo-tagline">Digital Engineering</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-nav="home" class="">Home</a></li>
+    <li><a href="../pages/services.html" data-nav="services" class="">Services</a></li>
+    <li><a href="../pages/portfolio.html" data-nav="portfolio" class="">Portfolio</a></li>
+    <li><a href="../pages/about.html" data-nav="about" class="">About</a></li>
+    <li><a href="../pages/team.html" data-nav="team" class="">Team</a></li>
+    <li><a href="../pages/tech.html" data-nav="tech" class="">Stack</a></li>
+    <li><a href="../pages/pricing.html" data-nav="pricing" class="active">Pricing</a></li>
+    <li><a href="../pages/blog.html" data-nav="blog" class="">Journal</a></li>
+    <li><a href="../pages/contact.html" data-nav="contact" class="nav-cta ">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMob()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="../index.html">Home</a>
+  <a href="../pages/services.html">Services</a>
+  <a href="../pages/portfolio.html">Portfolio</a>
+  <a href="../pages/about.html">About</a>
+  <a href="../pages/team.html">Team</a>
+  <a href="../pages/tech.html">Stack</a>
+  <a href="../pages/pricing.html">Pricing</a>
+  <a href="../pages/blog.html">Journal</a>
+  <a href="../pages/contact.html">Contact</a>
+</div>
+
+<div class="pr-hero">
+  <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80" alt="Pricing">
+  <div class="pr-hero-over">
+    <div class="kicker">Investment</div>
+    <div class="g-line"></div>
+    <h1 class="ph-title">Transparent <em>Pricing</em></h1>
+    <p class="ph-sub" style="color:rgba(237,232,216,.6);">No hidden fees. No surprises. Quality work at clear prices.</p>
+  </div>
+</div>
+<div class="pr-grid">
+  <div class="pr-card fade-up">
+    <div class="pr-plan">Essentials</div>
+    <div class="pr-price"><sup>$</sup>2,499<span>/project</span></div>
+    <p class="pr-desc">For startups and SMEs establishing a professional digital presence.</p>
+    <ul class="pr-features">
+      <li><span class="pr-yes">◈</span> Custom Website (up to 8 pages)</li>
+      <li><span class="pr-yes">◈</span> Responsive Mobile Design</li>
+      <li><span class="pr-yes">◈</span> SEO Optimisation</li>
+      <li><span class="pr-yes">◈</span> CMS Integration</li>
+      <li><span class="pr-yes">◈</span> 30-day Support</li>
+      <li><span class="pr-no">—</span> Custom Backend / API</li>
+      <li><span class="pr-no">—</span> Mobile Application</li>
+      <li><span class="pr-no">—</span> AI Integration</li>
+    </ul>
+    <a href="contact.html" class="btn btn-ghost" style="width:100%;justify-content:center;display:flex;">Get Started</a>
+  </div>
+  <div class="pr-card feat fade-up">
+    <div class="pr-badge">Most Chosen</div>
+    <div class="pr-plan">Signature</div>
+    <div class="pr-price"><sup>$</sup>7,999<span>/project</span></div>
+    <p class="pr-desc">Full-featured web app or mobile app for companies with serious ambitions.</p>
+    <ul class="pr-features">
+      <li><span class="pr-yes">◈</span> Everything in Essentials</li>
+      <li><span class="pr-yes">◈</span> Custom Backend &amp; API</li>
+      <li><span class="pr-yes">◈</span> Database Architecture</li>
+      <li><span class="pr-yes">◈</span> User Authentication</li>
+      <li><span class="pr-yes">◈</span> Payment Integration</li>
+      <li><span class="pr-yes">◈</span> Admin Dashboard</li>
+      <li><span class="pr-yes">◈</span> 60-day Support</li>
+      <li><span class="pr-no">—</span> AI Integration</li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;display:flex;">Get Started</a>
+  </div>
+  <div class="pr-card fade-up">
+    <div class="pr-plan">Bespoke</div>
+    <div class="pr-price" style="font-size:40px;letter-spacing:-1px;">Custom</div>
+    <p class="pr-desc">Tailored solutions for organisations with complex, ambitious requirements.</p>
+    <ul class="pr-features">
+      <li><span class="pr-yes">◈</span> Everything in Signature</li>
+      <li><span class="pr-yes">◈</span> AI / ML Integration</li>
+      <li><span class="pr-yes">◈</span> Microservices Architecture</li>
+      <li><span class="pr-yes">◈</span> DevOps &amp; CI/CD Setup</li>
+      <li><span class="pr-yes">◈</span> Security &amp; Performance Audit</li>
+      <li><span class="pr-yes">◈</span> 1-year Support SLA</li>
+      <li><span class="pr-yes">◈</span> Dedicated Project Manager</li>
+      <li><span class="pr-yes">◈</span> Quarterly Strategy Reviews</li>
+    </ul>
+    <a href="contact.html" class="btn btn-ghost" style="width:100%;justify-content:center;display:flex;">Let's Talk</a>
+  </div>
+</div>
+<p class="pr-note">All prices are estimates. Final investment depends on scope. <a href="contact.html">Book a free consultation</a> for a precise proposal.</p>
+<div class="guarantee">
+  <div class="guar-cell fade-up"><div class="guar-icon">🛡️</div><div class="guar-title">Quality Guarantee</div><div class="guar-desc">30-day bug-fix warranty on every project, no questions asked.</div></div>
+  <div class="guar-cell fade-up"><div class="guar-icon">📅</div><div class="guar-title">On-Time Delivery</div><div class="guar-desc">94% of projects deliver on schedule. We communicate proactively if anything shifts.</div></div>
+  <div class="guar-cell fade-up"><div class="guar-icon">🔐</div><div class="guar-title">IP Protection</div><div class="guar-desc">All code and IP is yours on final payment. NDAs signed as standard.</div></div>
+</div>
+<div class="cta-band" style="margin-top:0;border-radius:0;margin-left:0;margin-right:0;border-left:none;border-right:none;">
+  <h2>Not Sure Which Plan <em>Fits?</em></h2>
+  <p>Book a free 30-minute call — we will recommend the right path for your goals and budget.</p>
+  <div class="cta-band-actions">
+    <a href="contact.html" class="btn btn-primary">Book Free Consultation →</a>
+    <a href="services.html" class="btn btn-ghost">Our Services</a>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="../index.html" style="display:inline-flex;text-decoration:none;">
+        <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lg1" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5E4A8"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#7A6528"/>
+    </linearGradient>
+    <linearGradient id="lg2" x1="0" y1="19" x2="38" y2="19" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D6B4F"/>
+      <stop offset="100%" stop-color="#0D9E72"/>
+    </linearGradient>
+  </defs>
+  <path d="M19 1L35 9.5V28.5L19 37L3 28.5V9.5L19 1Z" stroke="url(#lg1)" stroke-width="0.8" fill="none" opacity="0.6"/>
+  <path d="M19 6L31 13V25L19 32L7 25V13L19 6Z" stroke="url(#lg1)" stroke-width="0.5" fill="none" opacity="0.28"/>
+  <path d="M6 25 Q19 34 32 25" stroke="url(#lg2)" stroke-width="0.8" fill="none" opacity="0.65"/>
+  <line x1="11" y1="15" x2="27" y2="15" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="19" y1="15" x2="19" y2="27" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="19" cy="2.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+  <circle cx="19" cy="35.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+</svg>
+        <div class="logo-words">
+          <span class="logo-name">TechHub</span>
+          <span class="logo-tagline">Digital Engineering</span>
+        </div>
+      </a>
+      <p>A digital engineering studio built to deliver precise, elegant, and high-performing software solutions.</p>
+      <div class="f-socials">
+        <a href="#" class="f-soc" target="_blank" title="X / Twitter">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="f-soc" target="_blank" title="LinkedIn">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#" class="f-soc" target="_blank" title="Instagram">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" class="f-soc" target="_blank" title="GitHub">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="../pages/services.html">Web Development</a></li>
+        <li><a href="../pages/services.html">Mobile Apps</a></li>
+        <li><a href="../pages/services.html">Software Dev</a></li>
+        <li><a href="../pages/services.html">UI/UX Design</a></li>
+        <li><a href="../pages/services.html">Cloud &amp; DevOps</a></li>
+        <li><a href="../pages/services.html">AI Integration</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="../pages/about.html">About</a></li>
+        <li><a href="../pages/team.html">Team</a></li>
+        <li><a href="../pages/portfolio.html">Portfolio</a></li>
+        <li><a href="../pages/blog.html">Journal</a></li>
+        <li><a href="../pages/pricing.html">Pricing</a></li>
+        <li><a href="../pages/contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="../pages/tech.html">Tech Stack</a></li>
+        <li><a href="../pages/contact.html">Free Consultation</a></li>
+        <li><a href="../pages/contact.html">Get a Quote</a></li>
+        <li><a href="../pages/contact.html">Partnership</a></li>
+        <li><a href="../pages/contact.html">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 TechHub — Mudassir Afridi. All rights reserved.</p>
+    <p>Peshawar, Pakistan</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

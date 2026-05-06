@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — TechHub</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.co-hero{height:320px;position:relative;overflow:hidden;padding-top:68px;}
+.co-hero img{width:100%;height:100%;object-fit:cover;object-position:center 60%;filter:brightness(.28) saturate(.5);}
+.co-hero-over{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(to bottom,rgba(7,8,12,.2),rgba(7,8,12,.88));}
+.co-layout{display:grid;grid-template-columns:1fr 1.5fr;gap:56px;padding:64px 48px 72px;max-width:1200px;margin:0 auto;align-items:start;}
+.co-info h2{font-family:var(--serif);font-size:34px;font-weight:700;color:var(--text);margin-bottom:14px;line-height:1.15;}
+.co-info h2 em{font-style:italic;font-weight:400;color:var(--gold);}
+.co-info>p{font-size:14px;color:var(--text2);font-weight:300;line-height:1.85;margin-bottom:30px;}
+.co-methods{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.co-method{display:flex;align-items:center;gap:14px;padding:15px 18px;background:var(--card);border:1px solid var(--border);border-radius:8px;transition:border-color .2s;}
+.co-method:hover{border-color:var(--border2);}
+.co-ico{width:36px;height:36px;border-radius:7px;background:var(--deep);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.co-lbl{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--text3);text-transform:uppercase;margin-bottom:2px;}
+.co-val{font-size:13px;color:var(--text);}
+.co-img{border-radius:8px;overflow:hidden;height:180px;border:1px solid var(--border);}
+.co-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.5);}
+.co-form{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:40px;position:relative;overflow:hidden;}
+.co-form::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.co-form h3{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.co-form p{font-size:13px;color:var(--text2);font-weight:300;margin-bottom:26px;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.f-group{margin-bottom:16px;}
+.f-label{display:block;font-family:var(--mono);font-size:9px;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase;margin-bottom:7px;}
+.f-input{width:100%;background:var(--deep);border:1px solid var(--border);border-radius:5px;padding:11px 14px;font-family:var(--sans);font-size:13px;font-weight:300;color:var(--text);outline:none;transition:border-color .2s;}
+.f-input:focus{border-color:var(--gold);}
+textarea.f-input{resize:vertical;min-height:100px;}
+select.f-input option{background:var(--deep);}
+.f-success{display:none;text-align:center;padding:44px 16px;}
+.f-s-icon{font-family:var(--serif);font-size:48px;color:var(--gold);display:block;margin-bottom:14px;}
+.f-s-title{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--gold2);margin-bottom:8px;}
+.f-s-sub{font-size:13px;color:var(--text2);font-weight:300;line-height:1.7;}
+.loc-block{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.lb-img{overflow:hidden;height:260px;}
+.lb-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(.5);}
+.lb-info{background:var(--card);padding:44px 36px;display:flex;flex-direction:column;justify-content:center;}
+.lb-info h3{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--text);margin-bottom:18px;}
+.lb-info h3 em{font-style:italic;font-weight:400;color:var(--gold);}
+.lb-row{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--text2);font-weight:300;margin-bottom:13px;line-height:1.6;}
+.lb-ico{flex-shrink:0;width:24px;}
+@media(max-width:800px){.co-layout{grid-template-columns:1fr;gap:32px;padding:44px 20px 60px;}.co-form{padding:28px 20px;}.f-row{grid-template-columns:1fr;}.loc-block{grid-template-columns:1fr;}.lb-img{height:200px;}.lb-info{padding:32px 22px;}}
+</style>
+</head>
+<body data-page="contact">
+
+<nav>
+  <a class="logo" href="../index.html">
+    <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lg1" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5E4A8"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#7A6528"/>
+    </linearGradient>
+    <linearGradient id="lg2" x1="0" y1="19" x2="38" y2="19" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D6B4F"/>
+      <stop offset="100%" stop-color="#0D9E72"/>
+    </linearGradient>
+  </defs>
+  <path d="M19 1L35 9.5V28.5L19 37L3 28.5V9.5L19 1Z" stroke="url(#lg1)" stroke-width="0.8" fill="none" opacity="0.6"/>
+  <path d="M19 6L31 13V25L19 32L7 25V13L19 6Z" stroke="url(#lg1)" stroke-width="0.5" fill="none" opacity="0.28"/>
+  <path d="M6 25 Q19 34 32 25" stroke="url(#lg2)" stroke-width="0.8" fill="none" opacity="0.65"/>
+  <line x1="11" y1="15" x2="27" y2="15" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="19" y1="15" x2="19" y2="27" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="19" cy="2.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+  <circle cx="19" cy="35.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+</svg>
+    <div class="logo-words">
+      <span class="logo-name">TechHub</span>
+      <span class="logo-tagline">Digital Engineering</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-nav="home" class="">Home</a></li>
+    <li><a href="../pages/services.html" data-nav="services" class="">Services</a></li>
+    <li><a href="../pages/portfolio.html" data-nav="portfolio" class="">Portfolio</a></li>
+    <li><a href="../pages/about.html" data-nav="about" class="">About</a></li>
+    <li><a href="../pages/team.html" data-nav="team" class="">Team</a></li>
+    <li><a href="../pages/tech.html" data-nav="tech" class="">Stack</a></li>
+    <li><a href="../pages/pricing.html" data-nav="pricing" class="">Pricing</a></li>
+    <li><a href="../pages/blog.html" data-nav="blog" class="">Journal</a></li>
+    <li><a href="../pages/contact.html" data-nav="contact" class="nav-cta active">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMob()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="../index.html">Home</a>
+  <a href="../pages/services.html">Services</a>
+  <a href="../pages/portfolio.html">Portfolio</a>
+  <a href="../pages/about.html">About</a>
+  <a href="../pages/team.html">Team</a>
+  <a href="../pages/tech.html">Stack</a>
+  <a href="../pages/pricing.html">Pricing</a>
+  <a href="../pages/blog.html">Journal</a>
+  <a href="../pages/contact.html">Contact</a>
+</div>
+
+<div class="co-hero">
+  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80" alt="Contact">
+  <div class="co-hero-over">
+    <div class="kicker">Get in touch</div>
+    <div class="g-line"></div>
+    <h1 class="ph-title">Begin the <em>Conversation</em></h1>
+    <p class="ph-sub" style="color:rgba(237,232,216,.6);">Tell us about your vision. We respond within four hours.</p>
+  </div>
+</div>
+<div class="co-layout">
+  <div class="fade-up">
+    <h2>Let's build something <em>remarkable.</em></h2>
+    <p>Whether you have a complete brief or a single bold idea — we want to hear it. First consultation is always free.</p>
+    <div class="co-methods">
+      <div class="co-method"><div class="co-ico">✉</div><div><div class="co-lbl">Email</div><div class="co-val">hello@techhub.dev</div></div></div>
+      <div class="co-method"><div class="co-ico">☎</div><div><div class="co-lbl">Phone</div><div class="co-val">+92 (300) 123-4567</div></div></div>
+      <div class="co-method"><div class="co-ico">◎</div><div><div class="co-lbl">Location</div><div class="co-val">Peshawar, KPK, Pakistan</div></div></div>
+      <div class="co-method"><div class="co-ico">◷</div><div><div class="co-lbl">Hours</div><div class="co-val">Mon – Fri, 9am – 7pm PKT</div></div></div>
+    </div>
+    <div class="co-img"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Studio"></div>
+  </div>
+  <div class="co-form fade-up">
+    <h3>Send a Message</h3>
+    <p>Fill in the details and we will prepare a tailored response.</p>
+    <div id="f-form">
+      <div class="f-row">
+        <div class="f-group"><label class="f-label">First Name *</label><input id="f-name" type="text" class="f-input" placeholder="Mudassir"></div>
+        <div class="f-group"><label class="f-label">Last Name</label><input type="text" class="f-input" placeholder="Afridi"></div>
+      </div>
+      <div class="f-group"><label class="f-label">Email *</label><input id="f-email" type="email" class="f-input" placeholder="you@company.com"></div>
+      <div class="f-group"><label class="f-label">Company</label><input type="text" class="f-input" placeholder="Your organisation (optional)"></div>
+      <div class="f-group"><label class="f-label">Service Needed</label>
+        <select class="f-input">
+          <option value="">Select a discipline...</option>
+          <option>Web Development</option>
+          <option>Mobile App Development</option>
+          <option>Software Development</option>
+          <option>UI/UX Design</option>
+          <option>Cloud &amp; DevOps</option>
+          <option>AI / ML Integration</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="f-group"><label class="f-label">Budget Range</label>
+        <select class="f-input">
+          <option value="">Select a range...</option>
+          <option>$1,000 – $3,000</option>
+          <option>$3,000 – $8,000</option>
+          <option>$8,000 – $20,000</option>
+          <option>$20,000+</option>
+        </select>
+      </div>
+      <div class="f-group"><label class="f-label">Your Message *</label><textarea id="f-msg" class="f-input" placeholder="Describe your project, goals, timeline, and any specific requirements..."></textarea></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:12px;letter-spacing:3px;" onclick="sendForm()">Send Message →</button>
+      <p style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px;text-align:center;margin-top:14px;">Your information is kept strictly confidential.</p>
+    </div>
+    <div class="f-success" id="f-success">
+      <span class="f-s-icon">◈</span>
+      <div class="f-s-title">Message Received</div>
+      <div class="f-s-sub">Thank you for reaching out.<br>We will be in contact within four hours.</div>
+      <div style="margin-top:24px;"><a href="portfolio.html" class="btn btn-ghost">View Our Work</a></div>
+    </div>
+  </div>
+</div>
+<div class="loc-block">
+  <div class="lb-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80" alt="Peshawar"></div>
+  <div class="lb-info">
+    <h3>Find our <em>Studio</em></h3>
+    <div class="lb-row"><span class="lb-ico">📍</span><span>University Road, Peshawar, Khyber Pakhtunkhwa, Pakistan</span></div>
+    <div class="lb-row"><span class="lb-ico">🕐</span><span>Monday to Friday, 9:00 AM – 7:00 PM PKT (UTC+5)</span></div>
+    <div class="lb-row"><span class="lb-ico">✈️</span><span>Accessible from Bacha Khan International Airport — 25 minutes by taxi</span></div>
+    <div class="lb-row"><span class="lb-ico">🌍</span><span>Remote-first studio — we work with clients across 30+ countries globally</span></div>
+  </div>
+</div>
+<div class="cta-band" style="margin-top:0;border-radius:0;margin-left:0;margin-right:0;border-left:none;border-right:none;">
+  <h2>Prefer a Quick <em>Call?</em></h2>
+  <p>Book a 30-minute discovery call — no email chains required.</p>
+  <div class="cta-band-actions">
+    <a href="#" class="btn btn-primary" onclick="alert('Calendar booking would open here.')">Book a Call →</a>
+    <a href="pricing.html" class="btn btn-ghost">View Pricing</a>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="../index.html" style="display:inline-flex;text-decoration:none;">
+        <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lg1" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5E4A8"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#7A6528"/>
+    </linearGradient>
+    <linearGradient id="lg2" x1="0" y1="19" x2="38" y2="19" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D6B4F"/>
+      <stop offset="100%" stop-color="#0D9E72"/>
+    </linearGradient>
+  </defs>
+  <path d="M19 1L35 9.5V28.5L19 37L3 28.5V9.5L19 1Z" stroke="url(#lg1)" stroke-width="0.8" fill="none" opacity="0.6"/>
+  <path d="M19 6L31 13V25L19 32L7 25V13L19 6Z" stroke="url(#lg1)" stroke-width="0.5" fill="none" opacity="0.28"/>
+  <path d="M6 25 Q19 34 32 25" stroke="url(#lg2)" stroke-width="0.8" fill="none" opacity="0.65"/>
+  <line x1="11" y1="15" x2="27" y2="15" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="19" y1="15" x2="19" y2="27" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="19" cy="2.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+  <circle cx="19" cy="35.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+</svg>
+        <div class="logo-words">
+          <span class="logo-name">TechHub</span>
+          <span class="logo-tagline">Digital Engineering</span>
+        </div>
+      </a>
+      <p>A digital engineering studio built to deliver precise, elegant, and high-performing software solutions.</p>
+      <div class="f-socials">
+        <a href="#" class="f-soc" target="_blank" title="X / Twitter">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="f-soc" target="_blank" title="LinkedIn">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#" class="f-soc" target="_blank" title="Instagram">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" class="f-soc" target="_blank" title="GitHub">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="../pages/services.html">Web Development</a></li>
+        <li><a href="../pages/services.html">Mobile Apps</a></li>
+        <li><a href="../pages/services.html">Software Dev</a></li>
+        <li><a href="../pages/services.html">UI/UX Design</a></li>
+        <li><a href="../pages/services.html">Cloud &amp; DevOps</a></li>
+        <li><a href="../pages/services.html">AI Integration</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="../pages/about.html">About</a></li>
+        <li><a href="../pages/team.html">Team</a></li>
+        <li><a href="../pages/portfolio.html">Portfolio</a></li>
+        <li><a href="../pages/blog.html">Journal</a></li>
+        <li><a href="../pages/pricing.html">Pricing</a></li>
+        <li><a href="../pages/contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="../pages/tech.html">Tech Stack</a></li>
+        <li><a href="../pages/contact.html">Free Consultation</a></li>
+        <li><a href="../pages/contact.html">Get a Quote</a></li>
+        <li><a href="../pages/contact.html">Partnership</a></li>
+        <li><a href="../pages/contact.html">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 TechHub — Mudassir Afridi. All rights reserved.</p>
+    <p>Peshawar, Pakistan</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

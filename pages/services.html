@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — TechHub</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.svc-hero { height:360px; position:relative; overflow:hidden; padding-top:68px; }
+.svc-hero img { width:100%; height:100%; object-fit:cover; filter:brightness(.28) saturate(.5); }
+.svc-hero-over { position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(to bottom,rgba(7,8,12,.2),rgba(7,8,12,.85)); }
+
+.svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin:0 48px 72px; border-radius:12px; overflow:hidden; border:1px solid var(--border); }
+.svc-card { background:var(--card); padding:38px 32px; position:relative; transition:background .3s; }
+.svc-card:hover { background:var(--card2); }
+.svc-num { font-family:var(--serif); font-size:48px; font-weight:700; color:var(--card2); line-height:1; position:absolute; top:20px; right:22px; transition:color .3s; }
+.svc-card:hover .svc-num { color:var(--card2); }
+.svc-icon { font-size:26px; margin-bottom:16px; display:block; }
+.svc-title { font-family:var(--serif); font-size:20px; font-weight:700; color:var(--text); margin-bottom:10px; }
+.svc-desc { font-size:13px; color:var(--text2); line-height:1.8; font-weight:300; margin-bottom:20px; }
+.svc-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.svc-tag { font-family:var(--mono); font-size:10px; color:var(--text3); border:1px solid var(--border); padding:3px 9px; border-radius:3px; }
+
+.svc-split { display:grid; grid-template-columns:1fr 1fr; height:420px; margin-bottom:72px; }
+.ss-img { overflow:hidden; }
+.ss-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.45) saturate(.5); }
+.ss-content { background:var(--card); padding:52px 44px; display:flex; flex-direction:column; justify-content:center; }
+.ss-content h2 { font-family:var(--serif); font-size:34px; font-weight:700; color:var(--text); margin-bottom:16px; line-height:1.15; }
+.ss-content h2 em { font-style:italic; font-weight:400; color:var(--gold); }
+.ss-content p { font-size:14px; color:var(--text2); line-height:1.85; font-weight:300; }
+
+.faq-wrap { max-width:820px; margin:0 auto; padding:0 48px 72px; }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-q { display:flex; justify-content:space-between; align-items:center; padding:18px 0; cursor:pointer; font-family:var(--serif); font-size:18px; font-weight:600; color:var(--text); transition:color .2s; }
+.faq-q:hover { color:var(--gold); }
+.faq-icon { font-size:20px; color:var(--text3); transition:transform .3s, color .2s; }
+.faq-item.open .faq-icon { transform:rotate(45deg); color:var(--gold); }
+.faq-a { font-size:14px; color:var(--text2); font-weight:300; line-height:1.85; max-height:0; overflow:hidden; transition:max-height .35s ease, padding .35s; }
+.faq-item.open .faq-a { max-height:280px; padding-bottom:18px; }
+
+@media(max-width:800px){
+  .svc-grid { grid-template-columns:1fr; margin:0 20px 60px; }
+  .svc-split { grid-template-columns:1fr; height:auto; }
+  .ss-img { height:220px; }
+  .ss-content { padding:36px 22px; }
+  .faq-wrap { padding:0 20px 60px; }
+}
+</style>
+</head>
+<body data-page="services">
+
+<nav>
+  <a class="logo" href="../index.html">
+    <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lg1" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5E4A8"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#7A6528"/>
+    </linearGradient>
+    <linearGradient id="lg2" x1="0" y1="19" x2="38" y2="19" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D6B4F"/>
+      <stop offset="100%" stop-color="#0D9E72"/>
+    </linearGradient>
+  </defs>
+  <path d="M19 1L35 9.5V28.5L19 37L3 28.5V9.5L19 1Z" stroke="url(#lg1)" stroke-width="0.8" fill="none" opacity="0.6"/>
+  <path d="M19 6L31 13V25L19 32L7 25V13L19 6Z" stroke="url(#lg1)" stroke-width="0.5" fill="none" opacity="0.28"/>
+  <path d="M6 25 Q19 34 32 25" stroke="url(#lg2)" stroke-width="0.8" fill="none" opacity="0.65"/>
+  <line x1="11" y1="15" x2="27" y2="15" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="19" y1="15" x2="19" y2="27" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="19" cy="2.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+  <circle cx="19" cy="35.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+</svg>
+    <div class="logo-words">
+      <span class="logo-name">TechHub</span>
+      <span class="logo-tagline">Digital Engineering</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-nav="home" class="">Home</a></li>
+    <li><a href="../pages/services.html" data-nav="services" class="active">Services</a></li>
+    <li><a href="../pages/portfolio.html" data-nav="portfolio" class="">Portfolio</a></li>
+    <li><a href="../pages/about.html" data-nav="about" class="">About</a></li>
+    <li><a href="../pages/team.html" data-nav="team" class="">Team</a></li>
+    <li><a href="../pages/tech.html" data-nav="tech" class="">Stack</a></li>
+    <li><a href="../pages/pricing.html" data-nav="pricing" class="">Pricing</a></li>
+    <li><a href="../pages/blog.html" data-nav="blog" class="">Journal</a></li>
+    <li><a href="../pages/contact.html" data-nav="contact" class="nav-cta ">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMob()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="../index.html">Home</a>
+  <a href="../pages/services.html">Services</a>
+  <a href="../pages/portfolio.html">Portfolio</a>
+  <a href="../pages/about.html">About</a>
+  <a href="../pages/team.html">Team</a>
+  <a href="../pages/tech.html">Stack</a>
+  <a href="../pages/pricing.html">Pricing</a>
+  <a href="../pages/blog.html">Journal</a>
+  <a href="../pages/contact.html">Contact</a>
+</div>
+
+<div class="svc-hero">
+  <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1600&q=80" alt="Services">
+  <div class="svc-hero-over">
+    <div class="kicker">Disciplines</div>
+    <div class="g-line"></div>
+    <h1 class="ph-title">Our <em>Services</em></h1>
+    <p class="ph-sub" style="color:rgba(237,232,216,.6);">End-to-end engineering — from first concept to global scale.</p>
+  </div>
+</div>
+
+<div class="svc-grid">
+  <div class="svc-card fade-up"><span class="svc-num">01</span><span class="svc-icon">◈</span><div class="svc-title">Web Development</div><p class="svc-desc">Fast, SEO-optimised websites and applications — from marketing sites to full SaaS platforms, built for performance and longevity.</p><div class="svc-tags"><span class="svc-tag">React</span><span class="svc-tag">Next.js</span><span class="svc-tag">Vue</span><span class="svc-tag">Node.js</span></div></div>
+  <div class="svc-card fade-up"><span class="svc-num">02</span><span class="svc-icon">◉</span><div class="svc-title">Mobile Development</div><p class="svc-desc">Native and cross-platform apps for iOS and Android — smooth, beautiful, and built to retain users over the long run.</p><div class="svc-tags"><span class="svc-tag">React Native</span><span class="svc-tag">Flutter</span><span class="svc-tag">Swift</span><span class="svc-tag">Kotlin</span></div></div>
+  <div class="svc-card fade-up"><span class="svc-num">03</span><span class="svc-icon">⬡</span><div class="svc-title">Software Development</div><p class="svc-desc">Custom enterprise software, CRMs, ERPs, and automation tools built to streamline operations and scale with your business.</p><div class="svc-tags"><span class="svc-tag">Python</span><span class="svc-tag">Java</span><span class="svc-tag">Go</span><span class="svc-tag">Microservices</span></div></div>
+  <div class="svc-card fade-up"><span class="svc-num">04</span><span class="svc-icon">◇</span><div class="svc-title">UI/UX Design</div><p class="svc-desc">User-centred design grounded in research. Wireframes, prototypes, and polished visual systems that feel as good as they look.</p><div class="svc-tags"><span class="svc-tag">Figma</span><span class="svc-tag">Prototyping</span><span class="svc-tag">Research</span></div></div>
+  <div class="svc-card fade-up"><span class="svc-num">05</span><span class="svc-icon">⊕</span><div class="svc-title">Cloud &amp; DevOps</div><p class="svc-desc">Infrastructure, CI/CD pipelines, containerisation, and cloud migration. Your product always available, always secure.</p><div class="svc-tags"><span class="svc-tag">AWS</span><span class="svc-tag">Docker</span><span class="svc-tag">Kubernetes</span></div></div>
+  <div class="svc-card fade-up"><span class="svc-num">06</span><span class="svc-icon">◎</span><div class="svc-title">AI &amp; Machine Learning</div><p class="svc-desc">Intelligent systems built into your products — recommendation engines, NLP chatbots, and predictive analytics, ready for production.</p><div class="svc-tags"><span class="svc-tag">PyTorch</span><span class="svc-tag">OpenAI</span><span class="svc-tag">LangChain</span></div></div>
+</div>
+
+<div class="svc-split">
+  <div class="ss-img"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=900&q=80" alt="Team at work"></div>
+  <div class="ss-content">
+    <div class="kicker" style="justify-content:flex-start;">Our approach</div>
+    <h2>Every project starts with <em>understanding.</em></h2>
+    <p style="margin-bottom:14px;">Before we write a single line of code, we immerse ourselves in your business — understanding your goals, constraints, users, and competitive landscape.</p>
+    <p>This obsessive attention to context is what separates genuinely great software from merely functional software.</p>
+    <div style="margin-top:28px;"><a href="contact.html" class="btn btn-primary">Start a Project</a></div>
+  </div>
+</div>
+
+<div style="text-align:center;padding:0 48px 44px;">
+  <div class="kicker">Questions</div>
+  <div class="g-line"></div>
+  <h2 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,46px);font-weight:700;">Frequently <em style="font-style:italic;color:var(--gold);">Asked</em></h2>
+</div>
+<div class="faq-wrap">
+  <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">How long does a typical project take? <span class="faq-icon">+</span></div><div class="faq-a">Timelines vary: a website takes 2–4 weeks, a mobile app 6–12 weeks, and enterprise software 3–6 months. We provide a precise timeline during discovery.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Do you offer maintenance after launch? <span class="faq-icon">+</span></div><div class="faq-a">All projects include a 30-day bug-fix warranty. We also offer monthly retainers for ongoing development, updates, and 24/7 technical support.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Do you sign NDAs and IP agreements? <span class="faq-icon">+</span></div><div class="faq-a">All intellectual property transfers fully to you on final payment. NDAs and IP agreements are signed as standard on every engagement.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">How do you handle communication? <span class="faq-icon">+</span></div><div class="faq-a">Every project gets a dedicated manager, weekly reports, dashboard access, and Slack/email access. No surprises, ever.</div></div>
+</div>
+
+<div class="cta-band">
+  <h2>Have a Project in <em>Mind?</em></h2>
+  <p>Book a free 30-minute consultation — no obligation, no sales pitch.</p>
+  <div class="cta-band-actions">
+    <a href="contact.html" class="btn btn-primary">Book a Call →</a>
+    <a href="pricing.html" class="btn btn-ghost">View Pricing</a>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="../index.html" style="display:inline-flex;text-decoration:none;">
+        <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lg1" x1="0" y1="0" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5E4A8"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#7A6528"/>
+    </linearGradient>
+    <linearGradient id="lg2" x1="0" y1="19" x2="38" y2="19" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D6B4F"/>
+      <stop offset="100%" stop-color="#0D9E72"/>
+    </linearGradient>
+  </defs>
+  <path d="M19 1L35 9.5V28.5L19 37L3 28.5V9.5L19 1Z" stroke="url(#lg1)" stroke-width="0.8" fill="none" opacity="0.6"/>
+  <path d="M19 6L31 13V25L19 32L7 25V13L19 6Z" stroke="url(#lg1)" stroke-width="0.5" fill="none" opacity="0.28"/>
+  <path d="M6 25 Q19 34 32 25" stroke="url(#lg2)" stroke-width="0.8" fill="none" opacity="0.65"/>
+  <line x1="11" y1="15" x2="27" y2="15" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="19" y1="15" x2="19" y2="27" stroke="url(#lg1)" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="19" cy="2.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+  <circle cx="19" cy="35.5" r="1" fill="url(#lg1)" opacity="0.7"/>
+</svg>
+        <div class="logo-words">
+          <span class="logo-name">TechHub</span>
+          <span class="logo-tagline">Digital Engineering</span>
+        </div>
+      </a>
+      <p>A digital engineering studio built to deliver precise, elegant, and high-performing software solutions.</p>
+      <div class="f-socials">
+        <a href="#" class="f-soc" target="_blank" title="X / Twitter">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="f-soc" target="_blank" title="LinkedIn">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#" class="f-soc" target="_blank" title="Instagram">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" class="f-soc" target="_blank" title="GitHub">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="../pages/services.html">Web Development</a></li>
+        <li><a href="../pages/services.html">Mobile Apps</a></li>
+        <li><a href="../pages/services.html">Software Dev</a></li>
+        <li><a href="../pages/services.html">UI/UX Design</a></li>
+        <li><a href="../pages/services.html">Cloud &amp; DevOps</a></li>
+        <li><a href="../pages/services.html">AI Integration</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="../pages/about.html">About</a></li>
+        <li><a href="../pages/team.html">Team</a></li>
+        <li><a href="../pages/portfolio.html">Portfolio</a></li>
+        <li><a href="../pages/blog.html">Journal</a></li>
+        <li><a href="../pages/pricing.html">Pricing</a></li>
+        <li><a href="../pages/contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="../pages/tech.html">Tech Stack</a></li>
+        <li><a href="../pages/contact.html">Free Consultation</a></li>
+        <li><a href="../pages/contact.html">Get a Quote</a></li>
+        <li><a href="../pages/contact.html">Partnership</a></li>
+        <li><a href="../pages/contact.html">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 TechHub — Mudassir Afridi. All rights reserved.</p>
+    <p>Peshawar, Pakistan</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
